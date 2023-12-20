@@ -1,6 +1,7 @@
 #include "battleshiplib.h"
 #include <unistd.h>
 #include <stdlib.h>
+#include <time.h>
 
 t_params	init_params(void)
 {
@@ -44,14 +45,22 @@ char	*generate_grid(t_params params)
 	return(grid);
 }
 
-void	ft_putstr(char *str)
+int		add_ships(char *grid, int width, int length, char boat_cell)
 {
+	t_boat	*boats[5];
+	int		boats_size[5] = {2, 3, 3, 4, 5};
 	int		i;
 
 	i = 0;
-	while(str[i])
-		i++;
-	write(1, str, i);
+	while (i < 2)
+	{
+		boats[i] = gen_boat(width, length, boats_size[i]);
+		//if (!boats[i]);
+			//return(free_boats(boats, i));
+		if (!place_boat(*boats[i], grid, width, length, boat_cell))
+			i++;
+	}
+	return(0);
 }
 
 //int		main(int ac, char **av)
@@ -61,8 +70,10 @@ int		main(void)
 	char		*grid;
 
 	//t_params = get_params(ac, av);
+	srand(time(NULL)); // seed rand function;
 	params = init_params();
 	grid = generate_grid(params);
+	add_ships(grid, params.width, params.length, params.boat_cell);
 	ft_putstr(grid);
 	free(grid);
 	return(0);

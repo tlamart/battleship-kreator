@@ -3,7 +3,9 @@ CFLAGS	= -Wall -Wextra -Werror
 
 NAME	= battleship-kreator
 
-SRC		= src/main.c
+SRC		= src/main.c \
+		  src/libft.c \
+		  src/ships.c
 
 INCDIR	= inc/
 
