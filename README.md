@@ -4,8 +4,8 @@ This program generates a random grid to play battleship game.
 ## DFAULTS VALUES
 length = 10
 width = 10
-empty case = +
-battle = 0
+empty case = 0
+ship = X
 number of generated grid = 1
 
 ## OPTIONS
@@ -16,6 +16,7 @@ number of generated grid = 1
 --grid
 -f --file
 -o --output
+-h --help
 
 ## ROADMAP
 

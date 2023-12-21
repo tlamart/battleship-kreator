@@ -2,6 +2,8 @@
 # define BATTLESHIPLIB
 # define LENGTH 10
 # define WIDTH 10
+# define EMPTY_CELL '0'
+# define BOAT_CELL 'X'
 
 struct	s_params {
 	int		length;

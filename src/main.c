@@ -5,7 +5,7 @@
 
 t_params	init_params(void)
 {
-	t_params	params = {LENGTH, WIDTH, '0', 'x'};
+	t_params	params = {LENGTH, WIDTH, EMPTY_CELL, BOAT_CELL};
 	return(params);
 }
 
@@ -75,7 +75,9 @@ int		main(void)
 	params = init_params();
 	grid = generate_grid(params);
 	add_ships(grid, params.width, params.length, params.boat_cell);
+	ft_putstr("\n");
 	ft_putstr(grid);
+	ft_putstr("\n");
 	free(grid);
 	return(0);
 }

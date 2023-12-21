@@ -12,22 +12,41 @@ t_boat	*gen_boat(int width, int length, int size)
 		return(NULL);
 	boat->x_axis = rand() % (width);
 	boat->y_axis = rand() % (length);
-	//boat->direction = rand() % 2;
-	boat->direction = 0;
+	boat->direction = rand() % 2;
+	//boat->direction = 0;
 	boat->position = (boat->y_axis) * (width + 1) + boat-> x_axis;
 	boat->size = size;
-	printf("rand %d\n\n", rand());
-	printf("boat:\n\tx = %d, y = %d, pos = %d, dir = %d, size = %d\n", boat->x_axis, boat->y_axis, boat->position, boat->direction, boat->size);
+	//printf("rand %d\n\n", rand());
+	//printf("boat:\n\tx = %d, y = %d, pos = %d, dir = %d, size = %d\n", boat->x_axis, boat->y_axis, boat->position, boat->direction, boat->size);
 	return(boat);
+}
+
+int		check_v(char *grid, int start, int size, int width, char boat_cell)
+{
+	while (size)
+	{
+		if (start && grid[start] == boat_cell)
+			return(1);
+		start += width + 1;
+		size--;
+	}
+	return(0);
 }
 
 int		check_vertical(t_boat boat, char *grid, int width, int length, char boat_cell)
 {
-	(void)boat;
-	(void)grid;
-	(void)width;
-	(void)length;
-	(void)boat_cell;
+	if (boat.y_axis + boat.size > length)
+		return(1);
+	if (boat.y_axis && (grid[boat.position - width - 1] == boat_cell))
+		return(1);
+	if (check_v(grid, boat.position, boat.size + 1, width, boat_cell))
+		return(1);
+	if (boat.x_axis &&\
+		check_v(grid, boat.position - width - 2, boat.size + 2, width, boat_cell))
+		return(1);
+	if (boat.x_axis + 1 < width &&\
+		check_v(grid, boat.position - width, boat.size + 2, width, boat_cell))
+		return(1);
 	return(0);
 }
 
