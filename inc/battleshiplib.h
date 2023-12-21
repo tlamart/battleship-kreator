@@ -24,6 +24,6 @@ typedef struct s_boat t_boat;
 void	ft_putstr(char *str);
 
 t_boat	*gen_boat(int width, int length, int size);
-int		place_boat(t_boat boat, char *grid, int width, char boat_cell);
+int		place_boat(t_boat boat, char *grid, int width, int length, char boat_cell);
 
 #endif

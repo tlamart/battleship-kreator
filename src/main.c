@@ -52,7 +52,7 @@ int		add_ships(char *grid, int width, int length, char boat_cell)
 	int		i;
 
 	i = 0;
-	while (i < 2)
+	while (i < 5)
 	{
 		boats[i] = gen_boat(width, length, boats_size[i]);
 		//if (!boats[i]);
@@ -60,6 +60,7 @@ int		add_ships(char *grid, int width, int length, char boat_cell)
 		if (!place_boat(*boats[i], grid, width, length, boat_cell))
 			i++;
 	}
+	//free_boats(boats, 0);
 	return(0);
 }
 
