@@ -45,20 +45,26 @@ char	*generate_grid(t_params params)
 	return(grid);
 }
 
-int		add_ships(char *grid, int width, int length, char boat_cell)
+int		add_ships(char *grid, int width, int length)
 {
 	t_boat	*boats[5];
 	int		boats_size[5] = {2, 3, 3, 4, 5};
+	char	boat_cell;
 	int		i;
 
 	i = 0;
+	boat_cell = 'A';
 	while (i < 5)
 	{
 		boats[i] = gen_boat(width, length, boats_size[i]);
 		//if (!boats[i]);
 			//return(free_boats(boats, i));
 		if (!place_boat(*boats[i], grid, width, length, boat_cell))
+		{
 			i++;
+			boat_cell++;
+		}
+
 	}
 	//free_boats(boats, 0);
 	return(0);
@@ -74,7 +80,7 @@ int		main(void)
 	srand(time(NULL)); // seed rand function;
 	params = init_params();
 	grid = generate_grid(params);
-	add_ships(grid, params.width, params.length, params.boat_cell);
+	add_ships(grid, params.width, params.length);
 	ft_putstr("\n");
 	ft_putstr(grid);
 	ft_putstr("\n");
