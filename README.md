@@ -1,7 +1,7 @@
 ## APP DESCRIPTION
 This program generates a random grid to play battleship game.
 
-## DFAULTS VALUES
+## DEFAULTS VALUES
 length = 10
 width = 10
 empty case = 0
