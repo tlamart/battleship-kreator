@@ -82,7 +82,7 @@ int		main(void)
 	grid = generate_grid(params);
 	add_ships(grid, params.width, params.length);
 	ft_putstr("\n");
-	ft_putstr(grid);
+	ft_print_grid(grid);
 	ft_putstr("\n");
 	free(grid);
 	return(0);
